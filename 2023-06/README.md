@@ -1,3 +1,13 @@
+
+# Kafka Meetup London June 2023
+
+This is revealjs presentation of the key takeaways from the Kafka London Meetup.
+
+Maybe using revealjs is an overkill. I just wanted to try it out and used this as an opportunity.
+
+Seems alright but overkill for my needs. 
+
+
 <p align="center">
   <a href="https://revealjs.com">
   <img src="https://hakim-static.s3.amazonaws.com/reveal-js/logo/v1/reveal-black-text-sticker.png" alt="reveal.js" width="500">
