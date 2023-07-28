@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+		<title>London Kafka Meetup - June 2023 - Playback</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
@@ -16,8 +16,200 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section>
+					<section>
+						<h2>Welcome to<br/><img width="124" data-src="assets/kaluza-logo-rgb-negative-stacked.png"><br/>Tech Share!</h2>
+					</section>
+					<section>
+						<h2>Kafka Meetup London - June - 2023</h2>
+						<ul>
+							<li>Kafka enterprise strategy to evolve with demand</li>
+							<li>Enforcing Kafka best practices</li>
+						</ul>
+					</section>
+					<section>
+						<h2>About me</h2>
+						<p>Eakan Gopalakrishnan</p>
+						<p>Software Engineering Manager</p>
+						<p>Infrastructure & Kafka Platform</p>
+						<p>Reliability Squad</p>
+					</section>
+					<section>
+						<h2>Kafka Experience</h2>
+						<p>Absolutely None!!</p>
+						<p>Corrections welcome 👍🏽</p>
+					</section>
+				</section>
+				<section>
+					<section data-auto-animate>
+						<h2>Kafka enterprise strategy to evolve with demand</h2>
+						<p>John Mille - Principal Cloud Engineer at Sainsbury Tech</p>
+						<p>Walk through Sainsbury tech's Kafka journey so far, from self managed on-premises to the cloud</p>
+					</section>
+					<section>
+						<h2>Started off with little Kafka experience</h2>
+						<p>Learning from others, tooling and documentation. Making many mistakes.</p>
+						<img width="450" data-src="https://media.giphy.com/media/3ohuAxV0DfcLTxVh6w/giphy.gif">
+					</section>
+					<section data-visibility="hidden">
+						<h3>Key take-aways</h3>
+						<ul>
+							<li>Define rules to ensure data consistency</li>
+							<li>Define a topic naming convention that can be captured using a simple regex</li>
+						</ul>
+					</section>
+					<section>
+						<h2>DaaP - Data as a Product</h2>
+						<ul>
+							<li>Define a topic naming convention that can be captured using a simple regex - source/producer/owner at a glance</li>
+							<li>Categorise topics - identify public and private</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Starters</h3>
+						<ul>
+							<li>Topics must have a version id</li>
+							<li>Public topics must have a schema</li>
+							<li>After the first message has been produced - cannot change the following
+								<ul>
+									<li>partition count (change can mess up ordering)</li>
+									<li>retention policy (could impact your mirroring solution - replicator/mirrormaker)</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Tooling</h2>
+						<ul>
+							<li>Deployment automation of Kafka resources - whatever tech you use</li>
+							<li>Viewing your topics- many open source tools available - limited feature-set but good starters like AKHQ</li>
+							<li>Observability - monitoring and auditing</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Enabling Kafka GitOps</h3>
+						<ul>
+							<li>Shared responsibility model</li>
+							<li>Solution that scales - making development teams self sufficient</li>
+							<li>Solutions agnostic to vendors and are <i>Apache Kafka Native</i> - makes it easy to move without too much rework - "the protocol is open source, so should the tooling"</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Monitoring</h3>
+						<ul>
+							<li>
+								Find the right metrics - governance as platform team, other metrics for business and for devs
+							</li>
+							<li>
+								Managed services should free your team from operations
+							</li>
+							<li>
+								As admins:
+								<ul>
+									<li>keep an eye on topics and partition count</li>
+									<li>ingress and egress - io in message count and bytes and number of connections</li>
+									<li>Storage requirements - usage trends</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Monitoring for developers</h3>
+						<ul>
+							<li>Offset Lag - per consumer per topic per partition, your consumer app performance, scaling needs based on workload</li>
+							<li>Message counts and size - evaluate if Kafka is really a good choice</li>
+						</ul>
+					</section>
+					<section>
+						<h3>For C-Suite</h3>
+						<ul>Number of meters, accounts, cost per meter, forecasting data, etc.</ul>
+					</section>
+					<section>
+						<h3>Tooling</h3>
+						<ul>
+							<li> <a href="https://www.conduktor.io/console/">UI: Conduktor Console</a> - highly recommended - web based, actively maintained, licensed.</li>
+							<li>
+								<a href="https://github.com/compose-x/cfn-kafka-admin" target="_blank">cfn-kafka-admin</a> - CLI and Lambdas to CRUD kafka resources via Cloud Formation
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Tooling</h3>
+						<ul>
+							<li>Monitoring tools
+								<ul>
+									<li><a href="https://github.com/seglo/kafka-lag-exporter" target="_blank">Kafka lag exporter</a> - highly efficient tool to estimate latency</li>
+									<li><a href="https://github.com/JohnPreston/kafka-connect-watcher" target="_blank>">Kafka Connect Watcher</a> - custom tool developed to monitor connect clusters and send alerts where appropriate</li>
+								</ul>
+							</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Don't reinvent the wheel: use Kafka Connect and connectors</h3>
+						<ul>
+							<li>Open source connectors are maintained by multiple vendors</li>
+							<li>There are vendor specific connectors available as a paid service too</li>
+						</ul>
+						<img data-src="assets/apache-kafka-connect.png" width="760"/>
+					</section>
+					<section data-visibility="hidden">
+						<h3>I like reinventing wheels though 🤪</h3>
+						<ul>
+							<li>
+								Be prepared to handle failures, restarts, logging, scaling, serialisation and various data formats
+							</li>
+							<li>
+								You get to contribute, find problems and fix bugs yourself, maintain it
+							</li>
+							<li>Could have invested that effort building your actual business related features instead</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Did it all help?</h3>
+						<p>No production data corruption incidents!</p>
+						<p>Teams have the tools they need and are self sufficient when it comes to using Kafka!</p>
+						<p>Bad practices can be identified and rectified early as Ops team have visibility!</p>
+					</section>
+					<section>
+						<h3>What next For John's team?</h3>
+						<ul>
+							<li>
+								Common framework for every consumer/producer to go through similar access patterns - common suite of testing practices
+							</li>
+							<li>
+								Data Cataloging and data discovery made easier 
+							</li>
+							<li>Kafka best practice education</li>
+						</ul>
+					</section>
+					<section>
+						<h3>how do we get there?</h3>
+						<ul>
+							<li>
+								Finding the right tool to make it easier to enforce best practices - Exploring Conduktor Gateway
+							</li>
+							<li>Creating a Kafka admins/maintainers group - we have a kafka caretakers group here today</li>
+							<li>Share deployment methods and techniques among business units - Sainsbury's have several subdivisions</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Summary</h3>
+						<ul>
+							<li>Adopting kafka resource lifecycle rules pays off</li>
+							<li>Monitor what you need - not everything (could get expensive very quickly)</li>
+							<li>Prefer vendor agnostic tooling</li>
+							<li>Create an internal Kafka practices Community</li>
+							<li>Share learnings outside your org</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Some Q&A from the session</h3>
+						<ul>
+							<li>Your architecture determines your cost - design with the cost in mind. Don't use streaming if you really only do batch processing.</li>
+							<li>Datamasking, obfuscation and encryption on the fly</li>
+						</ul>
+					</section>
+				</section>
 			</div>
 		</div>
 
